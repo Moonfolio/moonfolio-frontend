@@ -1,4 +1,4 @@
 #!/bin/bash
 cd moonfolio-frontend
-mkdir node_modules
+npm install
 npm run build
