@@ -2,7 +2,7 @@
 jobs:
   - name: build
     plan:
-      - get: moonfolio
+      - get: moonfolio-frontend
         trigger: true
 
       - task: npm-build
@@ -11,18 +11,14 @@ jobs:
           image_resource:
             type: docker-image
             source: {repository: node, tag: "8" }
-        inputs:
-          - name: moonfolio
-            path: .
-        outputs:
-          - name: dist
-        run:
-          path: npm
-          args: [ build ]
+          inputs:
+            - name: moonfolio-frontend
+          run:
+            path: moonfolio-frontend/ci/scripts/build.sh
 
 resources:
-  - name: moonfolio
+  - name: moonfolio-frontend
     type: git
     source:
-    uri: git@github.com:moonfolio/moonfolio-frontend.git
-    branch: master
+      uri: https://github.com/Moonfolio/moonfolio-frontend
+      branch: master
