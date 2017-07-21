@@ -1,0 +1,28 @@
+---
+jobs:
+  - name: build
+    plan:
+      - get: moonfolio
+        trigger: true
+
+      - task: npm-build
+        config:
+          platform: linux
+          image_resource:
+            type: docker-image
+            source: {repository: node, tag: "8" }
+        inputs:
+          - name: moonfolio
+            path: .
+        outputs:
+          - name: dist
+        run:
+          path: npm
+          args: [ build ]
+
+resources:
+  - name: moonfolio
+    type: git
+    source:
+    uri: git@github.com:moonfolio/moonfolio-frontend.git
+    branch: master
