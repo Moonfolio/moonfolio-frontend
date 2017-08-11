@@ -49,27 +49,27 @@ export default {
   data () {
     return {
       tx: {
-        coinPair: ['','BTC'],
-        exchanger: '',
-        timestamp: 0,
-        amount: 0,
-        price: 0,
-        transactionValue: 0,
-        fee: 0,
-        type: 'buy'
+        "coinPair": ['','BTC'],
+        "exchanger": '',
+        "timestamp": 0,
+        "amount": 0,
+        "price": 0,
+        "transactionValue": 0,
+        "fee": 0,
+        "type": 'buy'
       }
     }
   },
-  computed: {
-    getTransactionsList() {
-      return transactions.list
-    }
-  },
+  // computed: {
+  //   getTransactionsList() {
+  //     return transactions.list
+  //   }
+  // },
   methods: {
     saveTransaction() {
+      console.log(transactions.list)
       transactions.list.push(this.tx)
-      // console.log('from register form:' + this.tx);
-      // eventBus.$emit('txSaved', this.tx)
+      console.log(transactions.list)
     }
   }
 }
