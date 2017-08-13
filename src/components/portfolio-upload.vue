@@ -1,23 +1,21 @@
 <template lang="html">
   <div class="container">
-    <input type="file" id="uploadedFile" @change="readFile">
+    <input type="file" id="uploadedFile" @change="initMoonfolio">
   </div>
 </template>
 
 <script>
-import {transactions} from '../transactionsStore.js'
 export default {
   methods: {
-    readFile() {
+    initMoonfolio() {
+      var vm = this;
       var selectedFile = document.getElementById('uploadedFile').files[0]
       var reader = new FileReader()
       reader.readAsText(selectedFile)
       reader.onload = function (event){
-        console.log(JSON.parse(event.target.result))
-        transactions.list = JSON.parse(event.target.result)
-        console.log(transactions.list);
+        vm.$store.dispatch('initMoonfolio', JSON.parse(event.target.result))
+        vm.$router.push('/home')
       }
-      this.$router.push('/home')
     }
   }
 }

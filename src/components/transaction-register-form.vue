@@ -6,9 +6,9 @@
         <label for="coinPair">Coin</label>
         <input type="text"
                name="coinPair"
-               v-model="tx.coinPair[0]">
+               v-model="order.coin">
         <label for="select">Exchanger</label>
-        <select v-model="tx.exchanger">
+        <select v-model="order.exchanger">
           <option value="Bittrex">Bittrex</option>
           <option value="Kraken">Kraken</option>
           <option value="Generic">Generic</option>
@@ -16,61 +16,61 @@
       </section>
       <section>
         <label for="input-text">Amount</label>
-        <input type="text" name="input-text" id="input-text"
-               placeholder="0">
+        <input type="number" name="input-text" id="input-text"
+               placeholder="0" v-model="order.amount">
         <label for="input-text">Price</label>
-        <input type="text" name="input-text" id="input-text"
-               placeholder="0">
+        <input type="number" name="input-text" id="input-text"
+               placeholder="0" v-model="order.price">
         <label for="input-text">Transaction value</label>
-        <input type="text" name="input-text" id="input-text"
-                placeholder="0">
+        <input type="number" name="input-text" id="input-text"
+                placeholder="0" v-model="order.transactionValue">
         <label for="input-text">Fee</label>
-        <input type="text" name="input-text" id="input-text"
-               placeholder="0">
+        <input type="number" name="input-text" id="input-text"
+               placeholder="0" v-model="order.fee">
       </section>
       <section>
          <label for="timestamp">date</label>
-         <input type="date" name="timestamp" value="" v-model="tx.timestamp">
+         <input type="date" name="timestamp" value="" v-model="order.timestamp">
       </section>
       <section>
-        <input type="radio" name="radio-1" value="buy" v-model="tx.type">
+        <input type="radio" name="radio-1" value="buy" v-model="order.type">
         <label for="radio-btn-1-1">buy</label>
-        <input type="radio" name="radio-1" value="sell" v-model="tx.type">
+        <input type="radio" name="radio-1" value="sell" v-model="order.type">
         <label for="">sell</label>
       </section>
-      <button type="button" name="button" @click="saveTransaction">save</button>
+      <button type="button" name="button" @click="addTransacion(order)">save</button>
     </form>
   </div>
 </template>
 
 <script>
-import {transactions} from '../transactionsStore.js'
+import { mapActions } from 'vuex'
 export default {
+  props: {
+    selectedMnf: {
+      type: Object,
+      required: true
+    }
+  },
   data () {
     return {
-      tx: {
-        "coinPair": ['','BTC'],
-        "exchanger": '',
-        "timestamp": 0,
-        "amount": 0,
-        "price": 0,
-        "transactionValue": 0,
-        "fee": 0,
-        "type": 'buy'
+      order:{
+        id: 0,
+        coin: '',
+        exchanger: '',
+        timestamp: '2017-08-13',
+        amount: 0,
+        price: 0,
+        transactionValue: 0,
+        fee: 0,
+        type: 'buy'
       }
     }
   },
-  // computed: {
-  //   getTransactionsList() {
-  //     return transactions.list
-  //   }
-  // },
   methods: {
-    saveTransaction() {
-      console.log(transactions.list)
-      transactions.list.push(this.tx)
-      console.log(transactions.list)
-    }
+    ...mapActions([
+      'addTransacion'
+    ])
   }
 }
 </script>

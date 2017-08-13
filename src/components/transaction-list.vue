@@ -1,6 +1,6 @@
 <template lang="html">
   <div class="container">
-    <h2>transactions list</h2>
+    <h2>positions list</h2>
     <table>
       <thead>
           <tr>
@@ -11,11 +11,9 @@
           </tr>
       </thead>
       <tbody>
-          <tr v-for="tx in tx_list">
+          <tr v-for="tx in positionsList">
               <td>{{tx.coinPair[0]}}</td>
-              <td>{{tx.exchanger}}</td>
               <td>{{tx.amount}}</td>
-              <td>{{tx.type}}</td>
           </tr>
       </tbody>
     </table>
@@ -23,16 +21,12 @@
 </template>
 
 <script>
-import {transactions} from '../transactionsStore.js'
+import { mapGetters } from 'vuex'
 export default {
-  mounted() {
-    console.log('mounted');
-    console.log(transactions.list);
-  },
-  data() {
-    return {
-      tx_list: transactions.list
-    }
+  computed: {
+      ...mapGetters([
+      'positionsList'
+    ])
   }
 }
 </script>

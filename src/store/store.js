@@ -5,22 +5,57 @@ Vue.use(Vuex)
 
 export const store = new Vuex.Store({
   state: {
-    selectedMoonfolio:'',
+    selectedMoonfolio:'first',
     moonfolio:[{
-      id:'',
-      name:'',
-      coins:[],
-      value:0,
-      transactions: [{
-        coinPair: ['','BTC'],
-        exchanger: '',
-        timestamp: 0,
-        amount: 0,
-        price: 0,
-        transactionValue: 0,
-        fee: 0,
-        type: 'buy'
-      }]
+      name:'first',
+      data:{
+        coins:[],
+        value:0,
+        transactions: [],
+        positions: []
+      }
     }]
+  },
+  getters: {
+    moonfolio: state => {
+      return state.moonfolio
+    },
+    coinsList: state => {
+      const currentMnfl = state.moonfolio.find(element=>{
+         return element.name === state.selectedMoonfolio
+       })
+       return currentMnfl.data.coins
+    },
+    transactionsList: state => {
+      const currentMnfl = state.moonfolio.find(element=>{
+         return element.name === state.selectedMoonfolio
+       })
+       return currentMnfl.data.transactions
+    },
+    positionsList: state => {
+      const currentMnfl = state.moonfolio.find(element=>{
+         return element.name === state.selectedMoonfolio
+       })
+       return currentMnfl.data.positions
+    }
+  },
+  actions: {
+    initMoonfolio: ({commit}, payload) => {
+      commit('initMoonfolio', payload)
+    },
+    addTransacion: ({ commit }, payload) => {
+      commit('addTransacion', payload)
+    }
+  },
+  mutations: {
+    initMoonfolio: (state,payload)=> {
+      state.moonfolio = payload
+    },
+    addTransacion: (state,payload) => {
+      const currentMnfl = state.moonfolio.find(element=>{
+         return element.name === state.selectedMoonfolio
+       })
+      currentMnfl.data.transactions.push(payload)
+    }
   }
 })
