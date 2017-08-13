@@ -3,22 +3,19 @@
     <transaction-register-form></transaction-register-form>
     <transactions-list></transactions-list>
     <portfolio-save-button></portfolio-save-button>
-    <portfolio-upload></portfolio-upload>
   </div>
 </template>
 
 <script>
-import transactionsList from './transaction-list'
-import transactionRegisterForm from './transaction-register-form'
-import portfolioSaveButton from './portfolio-save-button'
-import portfolioUpload from './portfolio-upload'
+import transactionsList from '../components/transaction-list'
+import transactionRegisterForm from '../components/transaction-register-form'
+import portfolioSaveButton from '../components/portfolio-save-button'
 
 export default {
   components: {
     transactionsList,
     transactionRegisterForm,
-    portfolioSaveButton,
-    portfolioUpload
+    portfolioSaveButton
   }
 }
 </script>

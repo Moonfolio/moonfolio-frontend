@@ -5,7 +5,7 @@
 </template>
 
 <script>
-
+import {transactions} from '../transactionsStore.js'
 export default {
   methods: {
     readFile() {
@@ -14,7 +14,10 @@ export default {
       reader.readAsText(selectedFile)
       reader.onload = function (event){
         console.log(JSON.parse(event.target.result))
+        transactions.list = JSON.parse(event.target.result)
+        console.log(transactions.list);
       }
+      this.$router.push('/home')
     }
   }
 }

@@ -12,14 +12,13 @@ import {transactions} from '../transactionsStore.js'
 export default {
   data(){
     return {
-      portfolio: transactions.list,
-      portfolioName: 'my_first.moonfolio.json',
+      portfolio: this.$store.state.moonfolio,
+      portfolioName: 'moonfolio.json',
       dataStr:''
     }
   },
   methods: {
     downloadPortfolio() {
-      console.log(this.portfolio)
       this.dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(this.portfolio))
     }
   }

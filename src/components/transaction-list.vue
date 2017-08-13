@@ -25,6 +25,10 @@
 <script>
 import {transactions} from '../transactionsStore.js'
 export default {
+  mounted() {
+    console.log('mounted');
+    console.log(transactions.list);
+  },
   data() {
     return {
       tx_list: transactions.list
