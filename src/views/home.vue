@@ -1,27 +1,24 @@
 <template lang="html">
   <div class="container">
+    <app-header></app-header>
     <transaction-register-form :selectedMnf="selectedMoonfolio"></transaction-register-form>
-    <transactions-list></transactions-list>
-    <portfolio-save-button></portfolio-save-button>
+    <positions-list></positions-list>
   </div>
 </template>
 
 <script>
-import transactionsList from '../components/transaction-list'
+import positionsList from '../components/positions-list'
 import transactionRegisterForm from '../components/transaction-register-form'
-import portfolioSaveButton from '../components/portfolio-save-button'
+import appHeader from '../components/header'
 
 export default {
   components: {
-    transactionsList,
-    transactionRegisterForm,
-    portfolioSaveButton
+    appHeader,
+    positionsList,
+    transactionRegisterForm
   },
   computed: {
     selectedMoonfolio() {
-      // return this.$store.state.moonfolio.filter(function(mnf){
-      //   return mnf.name === this.$store.state.selectedMoonfolio
-      // })
       let mnfList = this.$store.state.moonfolio
       let mnfName = this.$store.state.selectedMoonfolio
       let selectedMoonfolio;
@@ -36,5 +33,5 @@ export default {
 }
 </script>
 
-<style lang="css">
+<style lang="css" scoped>
 </style>

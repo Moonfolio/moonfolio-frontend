@@ -5,9 +5,10 @@
       <thead>
           <tr>
               <th>Coin</th>
-              <th>Exchanger</th>
-              <th>Amount</th>
-              <th>Type</th>
+              <th>purchase price avg.</th>
+              <th>Investment</th>
+              <th>Price</th>
+              <th>Profits</th>
           </tr>
       </thead>
       <tbody>

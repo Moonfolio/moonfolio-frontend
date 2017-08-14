@@ -20,6 +20,9 @@ export const store = new Vuex.Store({
     moonfolio: state => {
       return state.moonfolio
     },
+    moonfolioName: state => {
+      return state.selectedMoonfolio
+    },
     coinsList: state => {
       const currentMnfl = state.moonfolio.find(element=>{
          return element.name === state.selectedMoonfolio
