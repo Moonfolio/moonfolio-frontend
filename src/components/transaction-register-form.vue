@@ -59,10 +59,10 @@ export default {
         coin: '',
         exchanger: '',
         timestamp: '2017-08-13',
-        amount: 0,
-        price: 0,
-        transactionValue: 0,
-        fee: 0,
+        amount: '',
+        price: '',
+        transactionValue: '',
+        fee: '',
         type: 'buy'
       }
     }

@@ -19,13 +19,18 @@ export default {
 <style>
 body {
   margin: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #161B33;
 }
 
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: 'Inconsolata', monospace;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
 }
-
+a {
+  text-decoration: none;
+}
 </style>

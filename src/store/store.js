@@ -77,17 +77,6 @@ export const store = new Vuex.Store({
          currentMnfl.data.coins.push(payload.coin)
        }
     },
-    // addPosition: (state, payload) => {
-    //   const currentMnfl = state.moonfolio.find(element=>{
-    //      return element.name === state.selectedMoonfolio
-    //    })
-    //    currentMnfl.data.positions.push({
-    //      transactionNumber: 1,
-    //      coin: payload.coin,
-    //      totalInvestment: payload.price,
-    //      quantity: payload.amount
-    //    })
-    // },
     updatePosition: (state,payload) => {
       const currentMnfl = state.moonfolio.find(element=>{
          return element.name === state.selectedMoonfolio
@@ -96,8 +85,8 @@ export const store = new Vuex.Store({
          currentMnfl.data.positions.push({
            transactionNumber: 1,
            coin: payload.coin,
-           totalInvestment: payload.price,
-           quantity: payload.amount
+           totalInvestment: parseFloat(payload.transactionValue),
+           quantity: parseFloat(payload.amount)
          })
        } else {
          currentMnfl.data.positions
@@ -105,9 +94,15 @@ export const store = new Vuex.Store({
            return position.coin === payload.coin
          })
          .map((position)=>{
-           position.transactionNumber += 1
-           position.totalInvestment += payload.price
-           position.quantity += payload.amount
+           if (payload.type==='buy') {
+             position.transactionNumber += 1
+             position.totalInvestment += parseFloat(payload.transactionValue)
+             position.quantity += parseFloat(payload.amount)
+           } else {
+             position.transactionNumber += 1
+             //position.totalInvestment -= parseFloat(payload.transactionValue)
+             position.quantity -= parseFloat(payload.amount)
+           }
          })
        }
     }
