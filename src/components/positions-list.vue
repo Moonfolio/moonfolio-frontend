@@ -4,17 +4,24 @@
     <table>
       <thead>
           <tr>
-              <th>Coin</th>
-              <th>purchase price avg.</th>
-              <th>Investment</th>
-              <th>Price</th>
+              <th>Coin // </th>
+              <th>transactions number // </th>
+              <th>quantity // </th>
+              <th>price avg. // </th>
+              <th>Investment //</th>
+              <th>Actual Price // </th>
               <th>Profits</th>
           </tr>
       </thead>
       <tbody>
-          <tr v-for="tx in positionsList">
-              <td>{{tx.coinPair[0]}}</td>
-              <td>{{tx.amount}}</td>
+          <tr v-for="position in positionsList">
+              <td>{{position.coin}}</td>
+              <td>{{position.transactionNumber}}</td>
+              <td>{{position.quantity}}</td>
+              <td>---</td>
+              <td>{{position.totalInvestment}}</td>
+              <td>---</td>
+              <td>---</td>
           </tr>
       </tbody>
     </table>

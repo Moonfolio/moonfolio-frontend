@@ -46,19 +46,70 @@ export const store = new Vuex.Store({
     initMoonfolio: ({commit}, payload) => {
       commit('initMoonfolio', payload)
     },
-    addTransacion: ({ commit }, payload) => {
-      commit('addTransacion', payload)
+    addTransaction: ({ commit }, payload) => {
+      commit('addTransaction', payload)
+    },
+    updateCoinsList: ({ commit }, payload) => {
+      commit('updateCoinsList', payload)
+    },
+    addPosition: ({ commit }, payload) => {
+      commit('addPosition', payload)
+    },
+    updatePosition: ({ commit }, payload) => {
+      commit('updatePosition', payload)
     }
   },
   mutations: {
     initMoonfolio: (state,payload)=> {
       state.moonfolio = payload
     },
-    addTransacion: (state,payload) => {
+    addTransaction: (state,payload) => {
       const currentMnfl = state.moonfolio.find(element=>{
          return element.name === state.selectedMoonfolio
        })
       currentMnfl.data.transactions.push(payload)
+    },
+    updateCoinsList: (state, payload) => {
+      const currentMnfl = state.moonfolio.find(element=>{
+         return element.name === state.selectedMoonfolio
+       })
+       if (!currentMnfl.data.coins.includes(payload.coin)) {
+         currentMnfl.data.coins.push(payload.coin)
+       }
+    },
+    // addPosition: (state, payload) => {
+    //   const currentMnfl = state.moonfolio.find(element=>{
+    //      return element.name === state.selectedMoonfolio
+    //    })
+    //    currentMnfl.data.positions.push({
+    //      transactionNumber: 1,
+    //      coin: payload.coin,
+    //      totalInvestment: payload.price,
+    //      quantity: payload.amount
+    //    })
+    // },
+    updatePosition: (state,payload) => {
+      const currentMnfl = state.moonfolio.find(element=>{
+         return element.name === state.selectedMoonfolio
+       })
+       if (!currentMnfl.data.coins.includes(payload.coin)) {
+         currentMnfl.data.positions.push({
+           transactionNumber: 1,
+           coin: payload.coin,
+           totalInvestment: payload.price,
+           quantity: payload.amount
+         })
+       } else {
+         currentMnfl.data.positions
+         .filter((position)=>{
+           return position.coin === payload.coin
+         })
+         .map((position)=>{
+           position.transactionNumber += 1
+           position.totalInvestment += payload.price
+           position.quantity += payload.amount
+         })
+       }
     }
   }
 })
