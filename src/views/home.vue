@@ -1,8 +1,8 @@
 <template lang="html">
-  <div class="container">
+  <div class="home-container">
     <app-header></app-header>
-    <transaction-register-form :selectedMnf="selectedMoonfolio"></transaction-register-form>
     <positions-list></positions-list>
+    <transaction-register-form :selectedMnf="selectedMoonfolio"></transaction-register-form>
   </div>
 </template>
 
@@ -34,4 +34,8 @@ export default {
 </script>
 
 <style lang="css" scoped>
+.home-container {
+  height: 100%;
+  background-color: #E8E8E8;
+}
 </style>

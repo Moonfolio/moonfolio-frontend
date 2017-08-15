@@ -32,8 +32,8 @@ export default {
 
 <style lang="css" scoped>
 .container{
-  width: 320px;
-  height: 600px;
+  width: 24rem;
+  height: 24rem;
   margin: 20vh auto 0;
   display: flex;
   flex-direction: column;
@@ -54,8 +54,8 @@ export default {
   border-radius: 50px;
   background-color: #FFFB9B;
   position: absolute;
-  top: -.9rem;
-  left: -1.9rem;
+  top: -.6rem;
+  left: -1.1rem;
   z-index: -1;
 }
 .title::after {
@@ -91,8 +91,8 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 150px;
-  height: 150px;
+  width: 9rem;
+  height: 7rem;
   background-color: #E8E8E8;
   cursor: pointer;
 }

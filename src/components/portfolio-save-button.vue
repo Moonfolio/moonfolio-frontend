@@ -1,5 +1,5 @@
 <template lang="html">
-  <div class="container">
+  <div class="btn-container">
     <a id="downloadAnchorElem" @click="downloadMoonfolio"
                                :href="dataStr"
                                :download="portfolioName">download</a>
@@ -27,4 +27,16 @@ export default {
 </script>
 
 <style lang="css" scoped>
+.btn-container {
+  font-size: .8rem;
+  text-align: center;
+  background-color: #F05C5C;
+  padding: .3rem;
+  border-radius: 30px;
+  align-self: flex-end;
+}
+#downloadAnchorElem {
+  color: #e8e8e8;
+  font-weight: bold;
+}
 </style>

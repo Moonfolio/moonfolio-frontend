@@ -4,6 +4,7 @@ import Home from '@/views/home'
 import LoadData from '@/views/load-data'
 import BackSelection from '@/views/back-selection'
 import WorkInProgress from '@/views/work-in-progress'
+import Transactions from '@/views/transactions'
 
 Vue.use(Router)
 
@@ -28,6 +29,12 @@ export default new Router({
     {
       path: '/home',
       component: Home
+    },
+    {
+      path: '/transactions/:coin',
+      name: 'transactions',
+      component: Transactions,
+      props: true
     }
   ]
 })

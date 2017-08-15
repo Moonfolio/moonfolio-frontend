@@ -8,6 +8,7 @@ export const store = new Vuex.Store({
     selectedMoonfolio:'first',
     moonfolio:[{
       name:'first',
+      description: 'Brief and meaningfull description. Ex: Portfolio of long term investments',
       data:{
         coins:[],
         value:0,
@@ -67,7 +68,17 @@ export const store = new Vuex.Store({
       const currentMnfl = state.moonfolio.find(element=>{
          return element.name === state.selectedMoonfolio
        })
-      currentMnfl.data.transactions.push(payload)
+      currentMnfl.data.transactions.push({
+        id: payload.id,
+        coin: payload.coin,
+        exchanger: payload.exchanger,
+        timestamp: payload.timestamp,
+        amount: payload.amount,
+        price: payload.price,
+        transactionValue: payload.transactionValue,
+        fee: payload.fee,
+        type: payload.type
+      })
     },
     updateCoinsList: (state, payload) => {
       const currentMnfl = state.moonfolio.find(element=>{
